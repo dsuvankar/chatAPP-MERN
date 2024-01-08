@@ -54,14 +54,15 @@ const Chat = () => {
     ws.addEventListener("close", () => {
       setTimeout(() => {
         console.log("Disconnected, trying to reconnect");
-
+        // Note: You might want to extract this into a separate function if needed
         ws.close();
-        const newWs = new WebSocket("ws://localhost:4000");
+        const newWs = new WebSocket("ws://chat-app-mern-z8g7.vercel.app");
         setWs(newWs);
         newWs.addEventListener("message", handleMessage);
       }, 1000);
     });
 
+    // Cleanup function to remove event listeners and close the WebSocket connection
     return () => {
       ws.removeEventListener("message", handleMessage);
       ws.close();
