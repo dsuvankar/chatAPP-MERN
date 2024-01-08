@@ -48,7 +48,7 @@ const Chat = () => {
       }
     };
 
-    const ws = new WebSocket("ws://localhost:4000");
+    const ws = new WebSocket("ws://chat-app-mern-z8g7.vercel.app/");
     setWs(ws);
     ws.addEventListener("message", handleMessage);
     ws.addEventListener("close", () => {
