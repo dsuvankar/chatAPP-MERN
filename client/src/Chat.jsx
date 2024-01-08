@@ -126,7 +126,7 @@ const Chat = () => {
       ]);
     }
   }
-
+  axios.defaults.withCredentials = true;
   function sendFile(ev) {
     const reader = new FileReader();
     reader.readAsDataURL(ev.target.files[0]);
