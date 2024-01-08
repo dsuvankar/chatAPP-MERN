@@ -48,7 +48,7 @@ const Chat = () => {
       }
     };
 
-    const ws = new WebSocket("ws://chat-app-mern-z8g7.vercel.app/");
+    const ws = new WebSocket("ws://chat-app-mern-z8g7.vercel.app");
     setWs(ws);
     ws.addEventListener("message", handleMessage);
     ws.addEventListener("close", () => {
@@ -56,7 +56,7 @@ const Chat = () => {
         console.log("Disconnected, trying to reconnect");
 
         ws.close();
-        const newWs = new WebSocket("ws://chat-app-mern-z8g7.vercel.app");
+        const newWs = new WebSocket("ws://localhost:4000");
         setWs(newWs);
         newWs.addEventListener("message", handleMessage);
       }, 1000);
