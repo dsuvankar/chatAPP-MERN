@@ -13,11 +13,6 @@ const path = require("path");
 
 dotenv.config();
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error(err));
-
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
@@ -32,6 +27,11 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"], // allowed request methods
   })
 );
+
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error(err));
 
 //deploy code
 // const __dirname1 = path.resolve();
