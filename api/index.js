@@ -27,8 +27,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    credentials: true,
-    origin: "https://chat-app-mern-rho.vercel.app",
+    origin: "*", // Allows all origins
+    credentials: true, // to support cookies through cross-origin
+    methods: ["GET", "POST", "PUT", "DELETE"], // allowed request methods
   })
 );
 
