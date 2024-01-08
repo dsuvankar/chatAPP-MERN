@@ -17,48 +17,50 @@ const RegisterAndLogin = () => {
   }
 
   return (
-    <div className="bg-blue-50 h-screen flex items-center">
-      <form className="w-64 mx-auto mb-12 " onSubmit={handleSubmit}>
-        <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          type="text"
-          placeholder="userName"
-          className="block w-full rounded-sm p-2 mb-2 border"
-        />
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          placeholder="password"
-          className="block w-full rounded-sm p-2 mb-2 border"
-        />
-        <button className="bg-blue-500 text-white block w-full rounded-md p-2">
-          {isLoginOrRegister === "register" ? "Register" : "Login"}
-        </button>
-        <div className="text-center mt-1">
-          {isLoginOrRegister === "register" ? (
-            <div className="">
-              Already a Member?{" "}
-              <button
-                className="font-bold"
-                onClick={() => setIsLoginOrRegister("login")}>
-                Login here
-              </button>{" "}
-            </div>
-          ) : (
-            <div>
-              <span>Don&apos;t have account?</span>{" "}
-              <button
-                className="font-bold "
-                onClick={() => setIsLoginOrRegister("register")}>
-                Register here
-              </button>{" "}
-            </div>
-          )}
-        </div>
-      </form>
-    </div>
+    <React.StrictMode>
+      <div className="bg-blue-50 h-screen flex items-center">
+        <form className="w-64 mx-auto mb-12 " onSubmit={handleSubmit}>
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            type="text"
+            placeholder="userName"
+            className="block w-full rounded-sm p-2 mb-2 border"
+          />
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="password"
+            className="block w-full rounded-sm p-2 mb-2 border"
+          />
+          <button className="bg-blue-500 text-white block w-full rounded-md p-2">
+            {isLoginOrRegister === "register" ? "Register" : "Login"}
+          </button>
+          <div className="text-center mt-1">
+            {isLoginOrRegister === "register" ? (
+              <div className="">
+                Already a Member?{" "}
+                <button
+                  className="font-bold"
+                  onClick={() => setIsLoginOrRegister("login")}>
+                  Login here
+                </button>{" "}
+              </div>
+            ) : (
+              <div>
+                <span>Don&apos;t have account?</span>{" "}
+                <button
+                  className="font-bold "
+                  onClick={() => setIsLoginOrRegister("register")}>
+                  Register here
+                </button>{" "}
+              </div>
+            )}
+          </div>
+        </form>
+      </div>
+    </React.StrictMode>
   );
 };
 export default RegisterAndLogin;
