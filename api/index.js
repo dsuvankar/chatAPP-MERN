@@ -24,7 +24,7 @@ app.use(
   cors({
     origin: "*", // Allows all origins
     credentials: true, // to support cookies through cross-origin
-    methods: ["GET", "POST", "PUT", "DELETE"], // allowed request methods
+    origin: process.env.CLIENT_URL,
   })
 );
 
@@ -32,29 +32,6 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error(err));
-
-//deploy code
-// const __dirname1 = path.resolve();
-// const __dirname1 = __dirname;
-
-// if (process.env.NODE_ENV === "production") {
-//   const staticPath = path.join(__dirname1, "client/dist");
-//   console.log(`Serving static files from ${staticPath}`);
-//   app.use(express.static(staticPath));
-
-//   app.get("*", (req, res) => {
-//     const indexPath = path.resolve(__dirname1, "client", "dist", "index.html");
-//     console.log(`Attempting to send file: ${indexPath}`);
-//     res.sendFile(indexPath);
-//   });
-// }
-
-// const clientDistPath = path.join(__dirname, "../client/dist");
-// app.use(express.static(clientDistPath));
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(clientDistPath, "index.html"));
-// });
 
 app.get("/test", (req, res) => {
   res.json("test ok");
@@ -159,7 +136,7 @@ app.post("/logout", (req, res) => {
   res.cookie("token", "", { sameSite: "none", secure: true }).json("ok");
 });
 
-const server = app.listen(process.env.PORT || 4000);
+const server = app.listen(process.env.PORT || 4040);
 
 const wss = new ws.WebSocketServer({ server });
 wss.on("connection", (connection, req) => {

@@ -15,26 +15,6 @@ const Chat = () => {
   const { username, id, setId, setUsername } = useContext(UserContext);
   const divUnderMessages = useRef();
 
-  // useEffect(() => {
-  //   connectToWs();
-  // }, [selectedUserId]);
-
-  // useEffect(() => {
-  //   function connectToWs() {
-  //     const ws = new WebSocket("ws://localhost:4000");
-  //     setWs(ws);
-  //     ws.addEventListener("message", handleMessage);
-  //     ws.addEventListener("close", () => {
-  //       setTimeout(() => {
-  //         console.log("Disconnected, trying to reconnect");
-  //         connectToWs();
-  //       }, 1000);
-  //     });
-  //   }
-
-  //   connectToWs();
-  // }, [selectedUserId, handleMessage]);
-
   useEffect(() => {
     const handleMessage = (e) => {
       const messageData = JSON.parse(e.data);
@@ -48,7 +28,7 @@ const Chat = () => {
       }
     };
 
-    const ws = new WebSocket("ws://chat-app-mern-z8g7.vercel.app");
+    const ws = new WebSocket("ws://localhost:4040");
     setWs(ws);
     ws.addEventListener("message", handleMessage);
     ws.addEventListener("close", () => {
@@ -56,7 +36,7 @@ const Chat = () => {
         console.log("Disconnected, trying to reconnect");
         // Note: You might want to extract this into a separate function if needed
         ws.close();
-        const newWs = new WebSocket("ws://chat-app-mern-z8g7.vercel.app");
+        const newWs = new WebSocket("ws://localhost:4040");
         setWs(newWs);
         newWs.addEventListener("message", handleMessage);
       }, 1000);
